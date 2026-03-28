@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 # Configuration – override via environment variables in CI
 # ---------------------------------------------------------------------------
 ENDPOINT = "https://b12.io/apply/submission"
-SIGNING_SECRET = os.environ.get("SIGNING_SECRET", "hello-there-from-b12")
+SIGNING_SECRET = os.environ.get("SIGNING_SECRET", "")
 
 NAME          = os.environ.get("APPLICANT_NAME", "")
 EMAIL         = os.environ.get("APPLICANT_EMAIL", "")
