@@ -1,0 +1,35 @@
+name: B12 Job Application Submission
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:        # lets you re-run manually from the Actions UI
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Submit application to B12
+        env:
+          # Store the signing secret in GitHub → Settings → Secrets → Actions
+          SIGNING_SECRET:   ${{ secrets.SIGNING_SECRET }}
+
+          # Personal details (safe to keep in env or secrets)
+          APPLICANT_NAME:   "Tchokote Noubissie Hervé"
+          APPLICANT_EMAIL:  ${{ secrets.APPLICANT_EMAIL }}
+          RESUME_LINK:      "https://www.linkedin.com/in/hervenoubissie"
+          REPOSITORY_LINK:  "${{ github.server_url }}/${{ github.repository }}"
+
+          # Dynamically built action-run URL from built-in GitHub context vars
+          ACTION_RUN_LINK:  "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+        run: python submit.py
