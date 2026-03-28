@@ -12,12 +12,10 @@ from datetime import datetime, timezone
 ENDPOINT = "https://b12.io/apply/submission"
 SIGNING_SECRET = os.environ.get("SIGNING_SECRET", "hello-there-from-b12")
 
-NAME          = os.environ.get("APPLICANT_NAME", "Tchokote Noubissie Hervé")
-EMAIL         = os.environ.get("APPLICANT_EMAIL", "hervenoubs@gmail.com")
-RESUME_LINK   = os.environ.get("RESUME_LINK",
-                    "https://www.linkedin.com/in/hervenoubissie")
-REPO_LINK     = os.environ.get("REPOSITORY_LINK",
-                    "https://github.com/hervenoubs/b12-application")
+NAME          = os.environ.get("APPLICANT_NAME", "")
+EMAIL         = os.environ.get("APPLICANT_EMAIL", "")
+RESUME_LINK   = os.environ.get("RESUME_LINK", "")
+REPO_LINK     = os.environ.get("REPOSITORY_LINK", "")
 ACTION_LINK   = os.environ.get("ACTION_RUN_LINK", "")   # injected by CI
 
 # ---------------------------------------------------------------------------
